@@ -1,0 +1,9 @@
+package mypack;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		// TODO Auto-generate method stub
+		System.out.println("Hello from Java STS");
+	}
+}

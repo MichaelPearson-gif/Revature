@@ -1,0 +1,12 @@
+package eg2;
+
+public class AnotherPack {
+	public static void iAmStaticAnother() {
+		System.out.println("Hello static from AnotherPack class");
+	}
+	
+	public static void iAmStaticAnother(String name) {
+		System.out.println("Hello static by name from AnotherPack class and name = " + name);
+	}
+}
+}

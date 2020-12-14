@@ -1,0 +1,29 @@
+package eg1;
+
+import eg2.AnotherPack;
+
+public class HelloMethod {
+
+	public static void main(String[] args) {
+
+		// method name directly if the static method is of same class
+		iAmStatic();
+		iAmStatic("Michael");
+		
+		// ClassName.methodName() to access static methods of different class
+		Another.iAmStaticAnother();
+		Another.iAmStaticAnother("Michael");
+		
+		AnotherPack.iAmStaticAnotherPack();
+		AnotherPack.iAmStaticAnotherPack("Michael");
+	}
+	
+	public static void iAmStatic() {
+		System.out.println("Hello static");
+	}
+	
+	public static void iAmStatic(String name) {
+		System.out.println("Hello static by name and name = " + name);
+	}
+
+}

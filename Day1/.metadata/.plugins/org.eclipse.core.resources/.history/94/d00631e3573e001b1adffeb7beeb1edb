@@ -1,0 +1,19 @@
+package eg1;
+
+public class HelloMethod {
+
+	public static void main(String[] args) {
+
+		iAmStatic();
+		iAmStatic("Michael");
+	}
+	
+	public static void iAmStatic() {
+		System.out.println("Hello static");
+	}
+	
+	public static void iAmStatic(String name) {
+		System.out.println("Hello static by name and name = " + name);
+	}
+
+}
