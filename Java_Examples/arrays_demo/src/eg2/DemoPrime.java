@@ -37,5 +37,7 @@ public class DemoPrime {
  * 1) Print the array in reverse order
  * 2) Delete specific element from an array
  * 3) Find all the even numbers and put it in a new array and also find all odd numbers and put it in another array
- * 4) Find the sum of all even and odd numbers seperately and print the max of it.
+ * 4) Find the sum of all even and odd numbers seperately and print the max of it. (max of sum of even vs odd)
+ * 5) Find the minimum and the maximum element in an array
+ * 6) Find all Palidrome numbers in an array
  */ 
