@@ -1,10 +1,9 @@
-package tasks;
+package array;
 
-public class Task1 {
+public class ReverseArray {
 
 	public static void main(String[] args) {
-		
-		// Print the array in reverse order
+		/// Print the array in reverse order
 		
 		// Initial array
 		int ar[] = {1,2,3,4,5,6,7,8,9,10};

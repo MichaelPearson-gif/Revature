@@ -1,2 +1,0 @@
-module assignment_2 {
-}
