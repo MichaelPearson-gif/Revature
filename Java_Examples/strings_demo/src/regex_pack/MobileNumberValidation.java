@@ -4,7 +4,7 @@ public class MobileNumberValidation {
 
 	public static void main(String[] args) {
 		
-		String s = "+1-234567890";
+		String s = "+1-2345678909";
 		if (s.matches("\\+1-[0-9]{10}")) {
 			System.out.println("Valid Mobile Number");
 		}

@@ -4,4 +4,9 @@
     <fullyQualifiedTypeName name="eg2.Outer.InnerPublic"/>
     <fullyQualifiedTypeName name="eg2.Outer.InnerPublicStatic"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

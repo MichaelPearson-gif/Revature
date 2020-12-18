@@ -63,9 +63,14 @@ public class EvenVsOddArrays {
 			oddSum = oddSum + oddArray[i];
 		}
 		
-		// Print the sums
-		System.out.println("The sum of all even numbers in the array is " + evenSum);
-		System.out.println("The sum of all odd numbers in the array is " + oddSum);
+		// Decide which sum is bigger and print out the result
+		if (evenSum > oddSum) {
+			System.out.println("The even sum is larger, at " + evenSum);
+		}
+		else {
+			System.out.println("The odd sum is larger, at" + oddSum);
+		}
+		
 		
 	}
 

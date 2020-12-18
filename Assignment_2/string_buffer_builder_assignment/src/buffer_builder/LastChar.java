@@ -1,7 +1,5 @@
 package buffer_builder;
 
-import java.util.Arrays;
-
 public class LastChar {
 
 	public static void main(String[] args) {
@@ -10,19 +8,23 @@ public class LastChar {
 		// Create a String
 		String s = "Hello my name is Michael what is your name";
 		
-		// Initialize a character array to store the individual words
+		// Create a StringBuilder object
+		StringBuilder sb = new StringBuilder();
 		
-		// Loop through the string and store substrings into the array
-		// Substrings are split at the white spaces
+		// Initialize an array to store the individual words
+		String ar[] = s.split(" ");
 		
-		// Change the last character of each element to uppercase
+		// Create a variable to store the index of the last character of each word
+//		int lastChar = ar.length - 1;
 		
-		// Concatenate into a string again and print it out to the console.
+		// Loop through the array making the last character in each word uppercase
+		for (int i = 0; i < ar.length; i++) {
+			sb.append(ar[i].substring(0, ar[i].length()-1)).append(Character.toUpperCase(ar[i].charAt(ar[i].length()-1))).append(" ");
+		}
 		
-		String c = s.substring(0,5);
-		System.out.println(c);
-		System.out.println(s.indexOf(" ", 5+1));
-		System.out.println(s.trim().length());
+		// Print out the result
+		System.out.println(sb.toString().trim());
+		
 
 	}
 
