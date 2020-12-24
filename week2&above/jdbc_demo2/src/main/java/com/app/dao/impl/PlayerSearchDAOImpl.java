@@ -40,8 +40,30 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO{
 
 	@Override
 	public List<Player> getPlayersByTeamId(int teamId) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Player> playersTeamList = new ArrayList<>();
+		
+		try(Connection connection = PostgresqlConnection.getConnection()){
+			String sql = "select id, name, team_id, dob from test.player where team_id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, teamId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				Player player = new Player();
+				player.setId(resultSet.getInt("id"));
+				player.setName(resultSet.getString("name"));
+				player.setTeamId(resultSet.getInt("team_id"));
+				player.setDob(resultSet.getDate("dob"));
+				playersTeamList.add(player);
+			}
+			if (playersTeamList.size() == 0) {
+				throw new BusinessException("No Player for that team in the DB so far");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			System.out.println(e); // Take off this line when app is live
+			throw new BusinessException("Internal error occured contact SYSADMIN");
+		}
+		return playersTeamList;
 	}
 
 }

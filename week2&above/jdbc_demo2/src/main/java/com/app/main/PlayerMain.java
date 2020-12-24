@@ -79,6 +79,18 @@ public class PlayerMain {
 			
 			System.out.println(e.getMessage());
 		}
+		
+		try {
+			List<Player> playerTeamList = dao1.getPlayersByTeamId(103);
+			if (playerTeamList != null && playerTeamList.size() != 0) {
+				System.out.println("\n\nFound " + playerTeamList.size() + " players on team... Printing them all");
+				for (Player p:playerTeamList) {
+					System.out.println(p);
+				}
+			}
+		} catch (BusinessException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

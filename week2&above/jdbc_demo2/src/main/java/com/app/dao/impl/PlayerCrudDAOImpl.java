@@ -119,7 +119,7 @@ public class PlayerCrudDAOImpl implements PlayerCrudDAO{
 				playersList.add(player);
 			}
 			if (playersList.size() == 0) {
-				throw new BusinessException("No Player in teh DB so far");
+				throw new BusinessException("No Player in the DB so far");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println(e); // Take off this line when app is live
