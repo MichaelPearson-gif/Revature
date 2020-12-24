@@ -49,12 +49,19 @@ public class PlayerMain {
 //			System.out.println(e.getMessage());
 //		}
 		
+//		try {
+//			dao.updatePlayerTeamId(1, 100);
+//			System.out.println("Changed player's team id");
+//			
+//		} catch (BusinessException e) {
+//			
+//			System.out.println(e.getMessage());
+//		}
+		
 		try {
-			dao.updatePlayerTeamId(1, 100);
-			System.out.println("Changed player's team id");
-			
-		} catch (BusinessException e) {
-			
+			dao.deletePlayer(12);
+			System.out.println("Deleted player" );
+		}catch (BusinessException e) {
 			System.out.println(e.getMessage());
 		}
 	}

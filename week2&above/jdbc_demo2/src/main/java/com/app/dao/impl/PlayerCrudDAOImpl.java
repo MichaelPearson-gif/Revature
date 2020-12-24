@@ -42,10 +42,18 @@ public class PlayerCrudDAOImpl implements PlayerCrudDAO{
 	}
 
 	@Override
-	public void deletePlayer(int id) {
-		// TODO Auto-generated method stub
-		String sql = "delete from test.player where id = ?";
-		
+	public void deletePlayer(int id) throws BusinessException{
+		int c = 0;
+		try (Connection connection = PostgresqlConnection.getConnection()){
+			String sql = "delete from test.player where id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			
+			c = preparedStatement.executeUpdate();
+			
+		}catch(ClassNotFoundException | SQLException e) {
+			throw new BusinessException("Internal error occured contact SYSADMIN");
+		}
 	}
 
 	@Override
