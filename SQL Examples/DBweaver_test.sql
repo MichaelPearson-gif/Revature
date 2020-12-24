@@ -118,3 +118,4 @@ select team_name from team;
 -- Add a dob (date of birth) column
 alter table player 
 add column dob date;
+
