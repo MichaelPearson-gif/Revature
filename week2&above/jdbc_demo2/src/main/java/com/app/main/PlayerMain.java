@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.app.dao.PlayerCrudDAO;
+import com.app.dao.PlayerSearchDAO;
 import com.app.dao.impl.PlayerCrudDAOImpl;
+import com.app.dao.impl.PlayerSearchDAOImpl;
 import com.app.exception.BusinessException;
 import com.app.model.Player;
 
@@ -58,10 +60,23 @@ public class PlayerMain {
 //			System.out.println(e.getMessage());
 //		}
 		
+//		try {
+//			dao.deletePlayer(12);
+//			System.out.println("Deleted player" );
+//		}catch (BusinessException e) {
+//			System.out.println(e.getMessage());
+//		}
+		
+		PlayerSearchDAO dao1 = new PlayerSearchDAOImpl();
+		
 		try {
-			dao.deletePlayer(12);
-			System.out.println("Deleted player" );
-		}catch (BusinessException e) {
+			Player player = dao1.getPlayerByName("Jackie Chan");
+			if (player != null) {
+				System.out.println("Details of player " + player.getName());
+				System.out.println(player);
+			}
+		} catch (BusinessException e) {
+			
 			System.out.println(e.getMessage());
 		}
 	}
