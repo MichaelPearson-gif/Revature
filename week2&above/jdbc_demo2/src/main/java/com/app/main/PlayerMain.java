@@ -50,13 +50,8 @@ public class PlayerMain {
 //		}
 		
 		try {
-			Player p1 = dao.getPlayerById(1);
-			
-			if (p1 != null) {
-				p1.setTeamId(dao.updatePlayerTeamId(p1.getId(), 100));;
-				System.out.println("Updated details of player");
-//				System.out.println(p1);
-			}
+			dao.updatePlayerTeamId(1, 100);
+			System.out.println("Changed player's team id");
 			
 		} catch (BusinessException e) {
 			

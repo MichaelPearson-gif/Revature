@@ -58,13 +58,8 @@ public class PlayerCrudDAOImpl implements PlayerCrudDAO{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, teamId);
 			preparedStatement.setInt(2, id);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			if (resultSet.next()) {
-				Player player = new Player();
-				player.setId(resultSet.getInt("id"));
-				player.setTeamId(teamId);
-				return player.getTeamId();
-			}
+			
+			c = preparedStatement.executeUpdate();
 			
 			
 		} catch (ClassNotFoundException | SQLException e) {
