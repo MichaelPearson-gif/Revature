@@ -26,9 +26,14 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 	}
 
 	@Override
-	public Player getPlayerByTeamId(int teamId) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Player> getPlayerByTeamId(int teamId) throws BusinessException {
+		List<Player> playersTeamList = null;
+		if (teamId >= 100 && teamId < 1000) {
+			playersTeamList = playerSearchDAO.getPlayerByTeamId(teamId);
+		}else {
+			System.out.println("Enter Team Id " + teamId + " is INVALID.....");
+		}
+		return playersTeamList;
 	}
 
 	@Override

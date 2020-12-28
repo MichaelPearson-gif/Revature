@@ -48,7 +48,21 @@ public class PlayerSearchMain {
 				}
 				break;
 			case 2:
-				System.out.println("Thank you for your interest this option is still under construction");
+				System.out.println("Enter a Team Id to get all players that are on that team");
+				try {
+					int teamId = Integer.parseInt(sc.nextLine());
+					List<Player> playersTeamList = playerSearchService.getPlayerByTeamId(teamId);
+					if (playersTeamList != null && playersTeamList.size() > 0) {
+						System.out.println("There are " + playersTeamList.size() + " number of player/s on team " + teamId + " ... Printing their details");
+						for (Player p:playersTeamList) {
+							System.out.println(p);
+						}
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Team Id cannot be special characters or symbols or white spaces. It is numeric");
+				}catch (BusinessException e) {
+					System.out.println(e.getMessage());
+				}
 				
 				break;
 			case 3:
