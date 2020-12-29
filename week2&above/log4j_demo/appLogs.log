@@ -1,0 +1,6 @@
+{INFO} HelloLog4j        Hello from INFO         29-Dec-2020 Tuesday PST 13:03:11
+{WARN} HelloLog4j        Hello from WARN         29-Dec-2020 Tuesday PST 13:03:11
+{ERROR} HelloLog4j       Hello from ERROR         29-Dec-2020 Tuesday PST 13:03:11
+{FATAL} HelloLog4j       Hello from FATAL         29-Dec-2020 Tuesday PST 13:03:11
+{INFO} HelloLogService   hello from log service helloLog()         29-Dec-2020 Tuesday PST 13:03:11
+{INFO} HelloLogService   bye bye from log service helloLog()         29-Dec-2020 Tuesday PST 13:03:11
