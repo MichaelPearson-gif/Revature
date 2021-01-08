@@ -19,7 +19,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 	public Player getPlayerById(int id) throws BusinessException {
 		Player player = null;
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select name, team_id, dob from test.player where id = ?";
+			String sql = "select * from test.player where id = ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
