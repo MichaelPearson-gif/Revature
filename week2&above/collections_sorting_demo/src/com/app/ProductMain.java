@@ -34,7 +34,7 @@ public class ProductMain {
 			Double d2 = p2.getCost();
 			return d1.compareTo(d2);
 		});
-		System.out.println("\n\nPrinting all the products sorted by ratings (high to low) and if 2 or more products have same rating then by cost (low to high)\n");
+		System.out.println("\n\nPrinting all the products sorted by cost (low to high)\n");
 		printProducts(productList);
 		
 		Collections.sort(productList, (Product p1, Product p2) -> {
@@ -43,13 +43,13 @@ public class ProductMain {
 			Float f2 = p2.getRatings();
 			x = f2.compareTo(f1);
 			if (x == 0) {
-			Double d1 = p1.getCost();
-			Double d2 = p2.getCost();
-			x = d1.compareTo(d2);
+				Double d1 = p1.getCost();
+				Double d2 = p2.getCost();
+				x = d1.compareTo(d2);
 			}
 			return x;
 		});
-		System.out.println("\n\nPrinting all the products sorted by cost (low to high)\n");
+		System.out.println("\n\nPrinting all the products sorted by ratings (high to low) and if 2 or more products have same rating then by cost (low to high)\n");
 		printProducts(productList);
 	}
 	public static void printProducts(List<Product> productList) {
@@ -59,3 +59,5 @@ public class ProductMain {
 	}
 
 }
+
+// Task try to recreate the same for Flight(id, name, manufactureName, cost, rating, availability)
