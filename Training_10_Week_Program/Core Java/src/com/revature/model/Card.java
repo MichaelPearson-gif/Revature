@@ -11,8 +11,15 @@
 // Make sure the first line is the package declaration or this won't compile!
 package com.revature.model;
 
-// This is a class; it is a blueprint.
-public class Card {
+import com.revature.constraints.Bannable;
+
+/*
+ * This is a class; it is a blueprint.
+ * 
+ * Card was originally a "concrete class". This means that it was a class which was not abstract, meaning that it wasn't allowed to have abstract methods. We have modified card so that it is instead
+ * "abstract"
+ */
+public abstract class Card{
 
 	/*
 	 * These fields have instance scope (Instance variables).
@@ -21,12 +28,10 @@ public class Card {
 	 * The id represents a unique numeric identifier for a card.
 	 * The name represents the name of the game card
 	 * The "game" represents the game from which the card comes from (e.g. Polkamans, Yugiyoh, Magik The Gathering)
-	 * The attackPower represents the amount of damage the monster can do to its opponent
 	 */
-	private int id;
-	private String name;
-	private String game;
-	private int attackPower;
+	protected int id;
+	public String name;
+	protected String game;
 	
 	/*
 	 * In Java, if you do not specify a constructor, you are provided with a default constructor - but ONLY if you do not specify a constructor
@@ -36,12 +41,13 @@ public class Card {
 	 * Note that the first line of any constructor is a call to the parent class's constructor. In Java, all classes inherit from the Object class.
 	 */
 	
-	public Card(){
-		super();
-		// This is a special type of constructor called a "no-args" constructor. It's aptly named because you do not pass any arguments to it when you call it.
-	}
+	// COMMENTED IT OUT TO SHOW EXAMPLE IN SUB-CLASS
+//	public Card(){
+//		super();
+//		// This is a special type of constructor called a "no-args" constructor. It's aptly named because you do not pass any arguments to it when you call it.
+//	}
 	
-	public Card(int id, String name, String game, int attackPower) {
+	public Card(int id, String name, String game) {
 		/*
 		 * Please take note of the variable scopes. These parameters are only accessible from within this block of code.
 		 * This means that their scope is "local".
@@ -52,7 +58,6 @@ public class Card {
 		this.id = id;
 		this.name = name;
 		this.game = game;
-		this.attackPower = attackPower;
 	}
 
 	public int getId() {
@@ -79,14 +84,57 @@ public class Card {
 		this.game = game;
 	}
 
-	public int getAttackPower() {
-		return attackPower;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((game == null) ? 0 : game.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
 	}
 
-	public void setAttackPower(int attackPower) {
-		this.attackPower = attackPower;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Card other = (Card) obj;
+		if (game == null) {
+			if (other.game != null)
+				return false;
+		} else if (!game.equals(other.game))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Card [id=" + id + ", name=" + name + ", game=" + game + "]";
 	}
 	
+	public void testPrint() {
+		System.out.println("I come from Card");
+	}
+	
+	public void concreteMethod() {
+		// This method has an implementation
+	}
+	
+	/*
+	 * This is an abstract method. Note that abstract classes do NOT have to contain any abstract methods.
+	 */
+	public abstract void abstractMethod();
 	
 }
 
