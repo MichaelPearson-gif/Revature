@@ -1,5 +1,7 @@
 package com.revature.model;
 
+import com.revature.exceptions.InvalidUsernameException;
+
 /*
  * This class now follows the "Java Bean" design pattern. A Java Bean has:
  * 
@@ -73,9 +75,21 @@ public class Player {
 	public String getUsername() {
 		return username;
 	}
-
+	
+	/*
+	 * The "throws" keyword is used as a part of a method signature to denote that a method potentially throws an Exception to the called
+	 */
+	
 	public void setUsername(String username) {
-		this.username = username;
+		if (username.length() < 3) {
+			try {
+				throw new InvalidUsernameException("The username is too short!");
+			}catch(InvalidUsernameException e) {
+				e.printStackTrace();
+			}
+		}else {
+			this.username = username;
+		}
 	}
 
 	public Card getFavoriteCard() {
