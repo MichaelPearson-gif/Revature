@@ -4,8 +4,12 @@ import com.revature.constraints.Bannable;
 
 /*
  * MonsterCard is a child class of the Card class. This means that MonsterCard inherits protected and public members
+ * 
+ * We've implemented the Comparable interface to define a "natural order" for MonsterCards.
+ * We decide what this natural order is.
+ * Should it be, for instance, the attack power?
  */
-public class MonsterCard extends Card implements Bannable{
+public class MonsterCard extends Card implements Bannable, Comparable<MonsterCard>{
 	
 	// The attackPower represents the amount of damage the monster can do to its opponent
 	private int attackPower;
@@ -45,6 +49,17 @@ public class MonsterCard extends Card implements Bannable{
 	public void abstractMethod() {
 		System.out.println("MonsterCard must implement this method!");
 		
+	}
+
+	@Override
+	public int compareTo(MonsterCard o) {
+		if(this.attackPower < o.attackPower) {
+			return -1;
+		}
+		if(this.attackPower > o.attackPower) {
+			return 1;
+		}
+		return 0;
 	}
 	
 }
