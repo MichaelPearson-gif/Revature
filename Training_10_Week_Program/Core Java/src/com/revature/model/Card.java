@@ -42,10 +42,10 @@ public abstract class Card{
 	 */
 	
 	// COMMENTED IT OUT TO SHOW EXAMPLE IN SUB-CLASS
-//	public Card(){
-//		super();
-//		// This is a special type of constructor called a "no-args" constructor. It's aptly named because you do not pass any arguments to it when you call it.
-//	}
+	public Card(){
+		super();
+		// This is a special type of constructor called a "no-args" constructor. It's aptly named because you do not pass any arguments to it when you call it.
+	}
 	
 	public Card(int id, String name, String game) {
 		/*

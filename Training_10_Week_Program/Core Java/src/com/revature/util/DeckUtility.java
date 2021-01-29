@@ -34,6 +34,28 @@ public class DeckUtility {
 		
 		Collections.sort(playerHand, mcc);
 
+		//Sort hand by ID using an lambda expression instead.
+		 Collections.sort(playerHand, (o1, o2) -> o1.getId() - o2.getId());
+		 
+		 //Sort hand in alphabetical order
+		 Collections.sort(playerHand, (o1, o2) -> o1.getName().compareTo(o2.getName()));
+		 
+		 /*
+		  * Note that there are several built-in functional interfaces
+		  * in Java, including:
+		  * 
+		  * Predicate
+		  * Consumer
+		  * Supplier
+		  * Comparator
+		  * BiConsumer
+		  * BiPredicate
+		  */
+		 
+		//Example of using a Predicate to quickly remove cards from my hand
+		playerHand.removeIf((card) -> card.getId() < 3);
+
+		
 	}
 
 }
