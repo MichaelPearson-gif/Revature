@@ -1,10 +1,10 @@
 -- It is gennerally going to be easiest for you to match your tables to your Java models.
 
-DROP TABLE cards;
+DROP TABLE cards CASCADE;
 -- We need to create a structure that can store data about cards
 
 CREATE TABLE cards(
-	card_id INT PRIMARY KEY,
+	card_id SERIAL PRIMARY KEY,
 	card_name VARCHAR NOT NULL,
 	card_type_id INT REFERENCES card_type(type_id),
 	face_up BOOL,

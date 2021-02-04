@@ -1,9 +1,9 @@
 -- Let's add some records to our tables
-INSERT INTO cards VALUES(1, 'Dragon Man', 2, TRUE, '1999-10-02');
-INSERT INTO cards VALUES(4, 'Water Wisp', NULL);
-INSERT INTO cards VALUES(2, 'Fire Ant', 1, FALSE, '2020-11-01');
-INSERT INTO cards VALUES(3, 'Dallas Cowboy', 3, TRUE, '1900-02-03');
-INSERT INTO cards VALUES(5, 'Steel Refigerator', 1, FALSE, '1234-03-30');
+INSERT INTO cards VALUES(DEFAULT, 'Dragon Man', 2, TRUE, '1999-10-02');
+INSERT INTO cards VALUES(DEFAULT, 'Water Wisp', NULL);
+INSERT INTO cards VALUES(DEFAULT, 'Fire Ant', 1, FALSE, '2020-11-01');
+INSERT INTO cards VALUES(DEFAULT, 'Dallas Cowboy', 3, TRUE, '1900-02-03');
+INSERT INTO cards VALUES(DEFAULT, 'Steel Refigerator', 1, FALSE, '1234-03-30');
 
 INSERT INTO card_type VALUES(2, 'Dragon');
 INSERT INTO card_type VALUES(1, 'Fire');
