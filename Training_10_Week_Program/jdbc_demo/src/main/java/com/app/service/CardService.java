@@ -3,6 +3,8 @@ package com.app.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.app.model.Card;
 import com.app.repository.CardRepository;
 import com.app.repository.impl.CardRepositoryImpl;
@@ -14,6 +16,12 @@ import com.app.repository.impl.CardRepositoryImpl;
  */
 
 public class CardService {
+	/*
+	 * Prior to today, we used the System class to "debug" issues by simply printing to the console.
+	 * This isn't considered good practice. 
+	 * Instead, we will use some logging technology (in our case, Log4J).
+	 */
+	private static final Logger log = Logger.getLogger(CardService.class);
 	
 	private CardRepository cardRepository;
 	
@@ -45,6 +53,8 @@ public class CardService {
 //		}
 		
 		allCards.removeIf((c) -> c.getCardType() == cardType);
+		
+		log.info("The number " + cardType + " was passed to the findAllOmittingType method and the output is: " + allCards);
 		
 		return allCards;
 	}

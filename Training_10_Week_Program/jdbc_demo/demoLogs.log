@@ -1,0 +1,1 @@
+{INFO}  CardService  CardService.java  57  The number 1 was passed to the findAllOmittingType method and the output is: [Card [cardId=1, cardName=Dragon Girl, cardType=2, isFaceUp=true, dateCreated=1969-12-31], Card [cardId=2, cardName=Monster Under My Bed, cardType=3, isFaceUp=false, dateCreated=1969-12-31]]  08-Feb-2021 Monday PST 08:33:53
