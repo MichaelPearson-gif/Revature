@@ -11,10 +11,13 @@ public class ConnectionFactory {
 		Connection conn = null;
 
 		try {
+			Class.forName("org.postgresql.Driver");
 			conn = DriverManager.getConnection(System.getenv("dburl"), System.getenv("dbusername"),
 					System.getenv("dbpassword"));
 			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 

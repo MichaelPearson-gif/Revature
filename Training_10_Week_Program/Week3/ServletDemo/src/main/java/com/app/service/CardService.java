@@ -35,7 +35,7 @@ public class CardService {
 	 * business logic.
 	 */
 	public void insert(Card card) {
-		this.insert(card);
+		this.cardRepository.insert(card);
 	}
 	
 	public List<Card> findAll(){
