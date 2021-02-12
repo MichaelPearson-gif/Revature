@@ -36,6 +36,12 @@ messageDiv.addEventListener('click', changeColor);
 // Note that client-side validation is NOT enough to validate user information, so it should never be used alone; do NOT skip server-side 
 // validation. That said, let's try our hand at writing a function which validates the length of a user password.
 
+// The first time we wrote this function, we did not account for two things:
+// 1. The message continues to be added infinitesly to the form. We would like to restrict that message so that it only appears once.
+// 2. The form can still be submitted despite our check on the password
+
+let hasNoMessage = true;
+
 function validatePassword(){
     // We need to grab the element whose value we're trying to validate
 
@@ -48,20 +54,60 @@ function validatePassword(){
 
         // Let's first selcet the form on our web page
 
-        let form = document.getElementById('form');
+        if(hasNoMessage){
+            let form = document.getElementById('form');
 
-        // Let's create the error message we wish to append to it
+            // Let's create the error message we wish to append to it
+    
+            let errorMessage = document.createElement('p');
+    
+            // Specify the text for the new paragraph as it is currently empty
+            errorMessage.innerText = 'Password must be at least 8 characters long!';
+    
+            // Now that we're specified the text content of our paragraph, let's append it to the form!
+            form.append(errorMessage);
+    
+            hasNoMessage = false; 
+        }
 
-        let errorMessage = document.createElement('p');
+        // Ideally, the form would not be submitted if the password's length was not sufficient. As such, we want to prevent the default behavior
+        // (submitting the form) of clicking the button.
 
-        // Specify the text for the new paragraph as it is currently empty
-        errorMessage.innerText = 'Password must be at least 8 characters long!';
+        // Be sure to check that an event is cancelable before calling preventDefault
+        if(Event.cancelable){
 
-        // Now that we're specified the text content of our paragraph, let's append it to the form!
-        form.append(errorMessage);
+            Event.preventDefault()
+
+        }
     }
 }
 
 // Let's create an event listener for the form's button
-let button = document.queryCommandSelector('button');
+let button = document.querySelector('button');
 button.addEventListener('click', validatePassword);
+
+
+/*
+Whenever we add event listeners to elements, there is actually an order in which the events are fired off.
+This becomes more apparent when we have multiple event listeners associated with the same element.
+*/
+
+messageDiv.addEventListener('click', () => {
+    // Let's make one of those spammy alert boxes pop up in the browser when this element is clicked
+
+    window.alert("You've won a free Iphone because you clicked this div");
+},
+    true
+)
+
+let innerH1 = document.querySelector('h1');
+
+innerH1.addEventListener('click', () => {
+    window.alert("You've won one billion dollars because you clicked this h1");
+})
+
+// The default order in which events are propagated in JS is from the innermost element to the outermost element.
+// This is referred to as "bubbling" (and it visually resembles blowing a bubble).
+
+// You can change the default order in which events are propagated and use "capturing" instead. 
+// Capturing allows us to make our outermost events occur first and innermost events occur last.
