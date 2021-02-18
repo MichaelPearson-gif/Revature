@@ -29,6 +29,7 @@ public class RequestHelper {
 			if(session != null) {
 				session.invalidate();
 			}
+			return "Your session has been invalidated";
 			
 		default:
 			response.setStatus(404);
@@ -51,14 +52,14 @@ public class RequestHelper {
 			if(new UserService().isValidUser(email, password)) {
 				// If the user credentials are valid, I'll grant the client a session and perhaps redirect the client to a new resource.
 				
+				// Let's also grant the client a session
+				HttpSession session = request.getSession();
+				session.setAttribute("useremail", email);
+				
 //				response.sendRedirect("/ServletReview/Pages/home.html");
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Pages/home.html");
 				dispatcher.forward(request, response);
-				
-				// Let's also grant the client a session
-				HttpSession session = request.getSession();
-				session.setAttribute("useremail", email);
 				
 			}
 			
