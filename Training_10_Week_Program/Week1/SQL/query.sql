@@ -26,6 +26,8 @@ INSERT INTO deck_card_jt VALUES(4, 2);
 INSERT INTO deck_card_jt VALUES(2, 1);
 -- Reading from the card table
 SELECT * FROM card_type;
+SELECT * FROM card_table;
+SELECT * FROM card_table_deck;
 SELECT * FROM cards;
 SELECT * FROM deck;
 SELECT * FROM player;

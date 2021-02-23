@@ -26,4 +26,12 @@ public class CardService {
 		return this.cardRepository.findAll();
 	}
 	
+	public Card findById(int id) {
+		return this.cardRepository.findById(id);
+	}
+	
+	public void update(Card c) {
+		this.cardRepository.update(c);
+	}
+	
 }

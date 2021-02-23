@@ -1,12 +1,17 @@
 package com.revature.model;
 
 import java.sql.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -45,6 +50,32 @@ public class Card {
 	private boolean face_up;
 	@Column
 	private Date date_created;
+	/*
+	 * The @JoinColumn allows us to specify that this field represents a foreign key.
+	 * The @ManyToOne allows us to specify our multiplicity. In this case, we are specifying that there is a many-to-one relationship between our card entity and our player entity.
+	 * 
+	 * Please note that Hibernate will eagerly fetch single associations, meaning that it will perform an automatic join and grab the Player information whenever a Card is fetched.
+	 */
+	@JoinColumn
+	@ManyToOne
+	private Player creator;
+	
+	/*
+	 * We want to create a many-to-many relationship between cards and decks as a custom deck can have many cards and several custom decks might feature the same cards.
+	 * The @ManyToMany specifies that there should be a many-to-many relationship between Card and Deck. 
+	 * The @JoinTable specifies that we want Hibernate to create a join table between these entities.
+	 * 
+	 * Unlike for a single instance, the fetch type for a collection in Hibernate is by default lazy.
+	 * This is because it doesn't make sense to eagerly fetch a large number of records immediately as they might not be needed immediately.
+	 * 
+	 * That said, Hibernate returns proxies for the decks, which are stand-ins for the actual deck records. 
+	 * When a Deck's information is actuallys needed (e.g. a property for one of the decks is requested), Hibernate will then fetch the Deck's information.
+	 * 
+	 * As a side note, because Hibernate's proxying requires that it makes a child class of an entity, your Hibernate entities can't be final.
+	 */
+	@ManyToMany
+	@JoinTable(joinColumns = {@JoinColumn(name = "card_id")}, inverseJoinColumns = {@JoinColumn(name = "deck_id")})
+	private Set<Deck> decks;
 	
 	
 	public Card() {
@@ -52,56 +83,127 @@ public class Card {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Card(int id, String name, boolean face_up, Date date_created) {
+
+	public Card(int id, String name, boolean face_up, Date date_created, Player creator, Set<Deck> decks) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.face_up = face_up;
 		this.date_created = date_created;
+		this.creator = creator;
+		this.decks = decks;
 	}
 
+
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
 
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+
+	/**
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
 
+
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+
+	/**
+	 * @return the face_up
+	 */
 	public boolean isFace_up() {
 		return face_up;
 	}
 
+
+	/**
+	 * @param face_up the face_up to set
+	 */
 	public void setFace_up(boolean face_up) {
 		this.face_up = face_up;
 	}
 
+
+	/**
+	 * @return the date_created
+	 */
 	public Date getDate_created() {
 		return date_created;
 	}
 
+
+	/**
+	 * @param date_created the date_created to set
+	 */
 	public void setDate_created(Date date_created) {
 		this.date_created = date_created;
 	}
+
+
+	/**
+	 * @return the creator
+	 */
+	public Player getCreator() {
+		return creator;
+	}
+
+
+	/**
+	 * @param creator the creator to set
+	 */
+	public void setCreator(Player creator) {
+		this.creator = creator;
+	}
+
+
+	/**
+	 * @return the decks
+	 */
+	public Set<Deck> getDecks() {
+		return decks;
+	}
+
+
+	/**
+	 * @param decks the decks to set
+	 */
+	public void setDecks(Set<Deck> decks) {
+		this.decks = decks;
+	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((creator == null) ? 0 : creator.hashCode());
 		result = prime * result + ((date_created == null) ? 0 : date_created.hashCode());
+		result = prime * result + ((decks == null) ? 0 : decks.hashCode());
 		result = prime * result + (face_up ? 1231 : 1237);
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -112,10 +214,20 @@ public class Card {
 		if (getClass() != obj.getClass())
 			return false;
 		Card other = (Card) obj;
+		if (creator == null) {
+			if (other.creator != null)
+				return false;
+		} else if (!creator.equals(other.creator))
+			return false;
 		if (date_created == null) {
 			if (other.date_created != null)
 				return false;
 		} else if (!date_created.equals(other.date_created))
+			return false;
+		if (decks == null) {
+			if (other.decks != null)
+				return false;
+		} else if (!decks.equals(other.decks))
 			return false;
 		if (face_up != other.face_up)
 			return false;
@@ -129,8 +241,11 @@ public class Card {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Card [id=" + id + ", name=" + name + ", face_up=" + face_up + ", date_created=" + date_created + "]";
+		return "Card [id=" + id + ", name=" + name + ", face_up=" + face_up + ", date_created=" + date_created
+				+ ", creator=" + creator + ", decks=" + decks + "]";
 	}
+
 }

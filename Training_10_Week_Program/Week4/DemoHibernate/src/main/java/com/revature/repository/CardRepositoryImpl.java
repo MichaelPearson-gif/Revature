@@ -76,7 +76,23 @@ public class CardRepositoryImpl implements CardRepository{
 	}
 
 	public void update(Card c) {
-		// TODO Auto-generated method stub
+		
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+			s.update(c);
+			tx.commit();
+			
+		}catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			s.close();
+		}
 		
 	}
 
@@ -99,6 +115,33 @@ public class CardRepositoryImpl implements CardRepository{
 			s.close();
 		}
 		
+	}
+
+	@Override
+	public Card findById(int id) {
+		
+		Card c = null;
+		
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			
+			s = HibernateSessionFactory.getSession();
+			tx = s.beginTransaction();
+			
+			c = s.get(Card.class, id);
+			
+			tx.commit();
+			
+		}catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}finally {
+			s.close();
+		}
+		
+		return c;
 	}
 
 }
