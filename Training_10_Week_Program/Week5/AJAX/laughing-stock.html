@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Jokes Near You</title>
+<base>
+<link rel="stylesheet" type="text/css" href="./Styles/now-playing.css"/>
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+	<header>
+		<h2>The Laughing Stock</h2>
+		<h4>Laughter On Demand</h4>
+    </header>
+	<nav class="navbar bg-custom navbar-expand-sm" id="navvy">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="">Home</a></li>
+		</ul>
+	</nav>
+	<h2 id="apiDivHeader"><u>Jokes of the Day</u></h2>
+	<div id="apiDiv">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Content</td>
+                    <td>Category</td>
+                </tr>
+            </thead>
+			<tbody id="jokesHere">
+				<!--This is where we'll place the jokes we asynchronously request-->
+			</tbody>
+        </table>
+		
+	</div>
+	<footer>
+		<hr>
+		<h5>Laughing Stock * 9001 Greatest Comedies Of All Time Lane, Hollywood, Cali, 66666 *
+			(123)-456-7891</h5>
+	</footer>
+	<script src="./Styles/now-playing.js"></script>
+	<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
