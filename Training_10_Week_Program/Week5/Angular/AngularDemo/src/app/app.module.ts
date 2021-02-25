@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { FormsModule } from '@angular/forms';
+import { ColorCodeDirective } from './directives/color-code.directive';
+import { PunctuationPipe } from './pipes/PunctuationPipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    BannerComponent
+    BannerComponent,
+    ColorCodeDirective,
+    PunctuationPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

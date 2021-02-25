@@ -15,3 +15,21 @@
     height: 15em;
     background-color: burlywood;
 }
+
+button{
+    background-color: yellow;
+    border-radius: 1em;
+    width: 10em;
+    height: 2em;
+    display: block;
+    margin: auto;
+}
+
+#greeter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    flex-shrink: inherit;
+}

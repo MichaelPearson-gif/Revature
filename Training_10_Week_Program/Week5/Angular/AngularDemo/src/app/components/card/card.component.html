@@ -1,24 +1,20 @@
+<div id="greeter">
+    <div *ngIf="greeterDiv">
+        <label for="yourName">What should we call you?</label>
+        <input [(ngModel)]="name" type="text" id="yourName" />
+        <button (click)="submitName()">Submit Name</button>
+    </div>
+    <h2 *ngIf="name">Welcome, {{name}}.</h2>
+</div>
+
 <div class="grid-container">
 
-    <div class="card">
-        <h2>Card #{{cards[0].id}}</h2>
-        <p>Description: {{cards[0].name}}</p>
-        <p>Face Up: {{cards[0].faceUp}}</p>
+    <div *ngFor="let c of cards" [hidden]="visibility" class="card">
+        <h2>Card #{{c.id}}</h2>
+        <p>Description: {{c.name | uppercase | punctuation}}</p>
+        <p appColorCode>Face Up: {{c.faceUp}}</p>
+        <label for="updateBox{{c.id}}">Update Card Description:</label>
+        <input [(ngModel)]="c.name" id="updateBox{{c.id}}"/>
     </div>
-    <div class="card">
-        <h2>Card #{{cards[1].id}}</h2>
-        <p>Description: {{cards[1].name}}</p>
-        <p>Face Up: {{cards[1].faceUp}}</p>
-    </div>
-    <div class="card">
-        <h2>Card #{{cards[2].id}}</h2>
-        <p>Description: {{cards[2].name}}</p>
-        <p>Face Up: {{cards[2].faceUp}}</p>
-    </div>
-    <div class="card">
-        <h2>Card #{{cards[3].id}}</h2>
-        <p>Description: {{cards[3].name}}</p>
-        <p>Face Up: {{cards[3].faceUp}}</p>
-    </div>
-
 </div>
+<button (click)="toggleVisibility()">Click Me!</button>
