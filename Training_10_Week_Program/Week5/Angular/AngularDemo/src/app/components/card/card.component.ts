@@ -66,4 +66,18 @@ findAllCards(){
     this.greeterDiv = false;
   }
 
+  // This method will take the card that is emitted by the child component's event emitter and use it to update the cards array
+  // present here.
+  updateCards(newCard:Card): void{
+
+    for(let c of this.cards){
+      if(c.id == newCard.id){
+        c.name = newCard.name
+      }
+    }
+
+    console.log(this.cards)
+
+  }
+
 }

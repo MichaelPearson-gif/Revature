@@ -1,0 +1,8 @@
+<div class="card">
+    <h2>Card #{{card.id}}</h2>
+    <p>Description: {{card.name}}</p>
+    <p appColorCode>Face Up: {{card.cardStatus}}</p>
+    <label for="updateBox{{card.id}}">Update Card Description:</label>
+    <input [(ngModel)]="updatedCard.name" id="updateBox{{card.id}}"/>
+    <button (click)="updateCardState()">Change Card Details</button>
+</div>

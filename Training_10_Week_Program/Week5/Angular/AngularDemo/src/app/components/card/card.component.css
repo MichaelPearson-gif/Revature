@@ -5,17 +5,6 @@
     gap: 5em;
 }
 
-.card{
-    text-align: center;
-    margin-left: 2em;
-    border-width: 0.1em;
-    border-style: solid;
-    border-radius: 0.5em;
-    width: 20em;
-    height: 15em;
-    background-color: burlywood;
-}
-
 button{
     background-color: yellow;
     border-radius: 1em;

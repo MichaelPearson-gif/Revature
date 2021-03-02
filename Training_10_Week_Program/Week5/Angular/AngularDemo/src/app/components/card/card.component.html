@@ -8,13 +8,6 @@
 </div>
 
 <div class="grid-container">
-
-    <div *ngFor="let c of cards" [hidden]="visibility" class="card">
-        <h2>Card #{{c.id}}</h2>
-        <p>Description: {{c.name | uppercase | punctuation}}</p>
-        <p appColorCode>Face Up: {{c.cardStatus}}</p>
-        <label for="updateBox{{c.id}}">Update Card Description:</label>
-        <input [(ngModel)]="c.name" id="updateBox{{c.id}}"/>
-    </div>
+    <app-card-details (updatedCardEvent)="updateCards($event)" *ngFor="let c of cards" [card]="c" [hidden]="visibility"></app-card-details>
 </div>
 <button (click)="toggleVisibility()">Click Me!</button>

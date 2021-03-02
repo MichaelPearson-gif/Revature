@@ -8,7 +8,9 @@ import { BannerComponent } from './components/banner/banner.component';
 import { FormsModule } from '@angular/forms';
 import { ColorCodeDirective } from './directives/color-code.directive';
 import { PunctuationPipe } from './pipes/PunctuationPipe';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { CanActivateCards, MockAuthService } from './auth/CanActivateCards';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BannerComponent,
     ColorCodeDirective,
     PunctuationPipe,
-    HttpClientModule
+    HttpClientModule,
+    CardDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CanActivateCards, MockAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
